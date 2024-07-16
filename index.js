@@ -16,10 +16,7 @@ const trackingModel = require("./models/trackingModel")
 const verifyToken = require("./verifyToken")
 
 // database connection 
-mongoose.connect(mondo_DB,{
-    useNewUrlParser: true,
-    useUnifiedTopology: true
-})
+mongoose.connect(mondo_DB)
 .then(()=>{
     console.log("Database connection successfull")
 })
