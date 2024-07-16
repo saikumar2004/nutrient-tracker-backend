@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-
+const port = process.env.PORT || 3000;
 const cors = require('cors');
 
 
@@ -199,6 +199,6 @@ app.get("/track/:userid/:date",async (req,res)=>{
 
 
 
-app.listen(8000,()=>{
+app.listen(port,()=>{
     console.log("Server is up and running");
 })
