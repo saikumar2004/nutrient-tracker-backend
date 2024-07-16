@@ -1,9 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
-
+require('dotenv').config();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const port = process.env.PORT || 3000;
+const mondo_DB=process.env.MONGO_DB;
+
 const cors = require('cors');
 
 
@@ -14,7 +16,10 @@ const trackingModel = require("./models/trackingModel")
 const verifyToken = require("./verifyToken")
 
 // database connection 
-mongoose.connect("mongodb+srv://saikumarkaicherla2004:3iEnCwDuXL9Sgywx@saicluster.josrqrv.mongodb.net/?retryWrites=true&w=majority&appName=saicluster/nutrify")
+mongoose.connect(mondo_DB,{
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+})
 .then(()=>{
     console.log("Database connection successfull")
 })
