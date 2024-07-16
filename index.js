@@ -16,7 +16,7 @@ const trackingModel = require("./models/trackingModel")
 const verifyToken = require("./verifyToken")
 
 // database connection 
-mongoose.connect("mongodb+srv://saikumarkaicherla2004:3iEnCwDuXL9Sgywx@saicluster.josrqrv.mongodb.net/nutrify?retryWrites=true&w=majority&appName=saicluster")
+mongoose.connect(process.env.MONGO_URL)
 .then(()=>{
     console.log("Database connection successfull")
 })
@@ -78,7 +78,7 @@ app.post("/login",async (req,res)=>{
             bcrypt.compare(userCred.password,user.password,(err,success)=>{
                 if(success==true)
                 {
-                    jwt.sign({email:userCred.email},"nutrifyapp",(err,token)=>{
+                    jwt.sign({email:userCred.email},process.env.SECRECT_KEY,(err,token)=>{
                         if(!err)
                         {
                             res.send({message:"Login Success",token:token,userid:user._id,name:user.name});
