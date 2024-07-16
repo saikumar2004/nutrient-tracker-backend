@@ -16,7 +16,7 @@ const trackingModel = require("./models/trackingModel")
 const verifyToken = require("./verifyToken")
 
 // database connection 
-mongoose.connect("mongodb+srv://saikumarkaicherla2004:3iEnCwDuXL9Sgywx@saicluster.josrqrv.mongodb.net/?retryWrites=true&w=majority&appName=saicluster/nutrify")
+mongoose.connect("mongodb+srv://saikumarkaicherla2004:3iEnCwDuXL9Sgywx@saicluster.josrqrv.mongodb.net/nutrify?retryWrites=true&w=majority&appName=saicluster")
 .then(()=>{
     console.log("Database connection successfull")
 })
