@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 require('dotenv').config();
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 7001;
 
 
 const cors = require('cors');
@@ -16,7 +16,7 @@ const trackingModel = require("./models/trackingModel")
 const verifyToken = require("./verifyToken")
 
 // database connection 
-mongoose.connect(process.env.MONGO_URL)
+mongoose.connect("mongodb://localhost:27017/nutrify")
 .then(()=>{
     console.log("Database connection successfull")
 })
@@ -78,7 +78,7 @@ app.post("/login",async (req,res)=>{
             bcrypt.compare(userCred.password,user.password,(err,success)=>{
                 if(success==true)
                 {
-                    jwt.sign({email:userCred.email},process.env.SECRECT_KEY,(err,token)=>{
+                    jwt.sign({email:userCred.email},"nutrifyapp",(err,token)=>{
                         if(!err)
                         {
                             res.send({message:"Login Success",token:token,userid:user._id,name:user.name});
