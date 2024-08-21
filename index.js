@@ -8,7 +8,6 @@ const port = process.env.PORT || 7001;
 
 const cors = require('cors');
 
-
 // importing models 
 const userModel = require('./models/userModel')
 const foodModel = require("./models/foodModel")
@@ -30,7 +29,11 @@ mongoose.connect(`${process.env.MONGO_DB}`)
 const app = express();
 
 app.use(express.json());
-app.use(cors());
+const corsOptions = {
+    origin: '*'
+  }
+app.use(cors(corsOptions));
+
 
 
 // endpoint for registering user 
